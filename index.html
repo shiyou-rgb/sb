@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運命学×マーケティング 動画講座 LP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* Container Logic: Keeps 16:9 aspect ratio look but fits in viewport */
+.slide-container {
+  align-items: center;
+  background-color: #0a0a0a; /* Deep Black */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Noto Sans JP', sans-serif;
+  
+  /* Modified for better responsiveness */
+  width: 100%;
+  max-width: 1280px; 
+  min-height: 720px; /* Ensures slide height */
+  
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px;
+  position: relative;
+  color: #f3f4f6;
+}
+
+/* 1.1 BACKGROUND STYLING */
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  z-index: 0;
+}
+
+/* Subtle Gold Line */
+.slide-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #000, #d4af37, #000);
+  z-index: 2;
+}
+
+.slide-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. TYPOGRAPHY */
+h1, h2, h3 {
+  font-family: 'Noto Serif JP', serif;
+  color: #d4af37; /* Gold */
+  margin: 0;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 64px); /* Responsive Font Size */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  margin-bottom: 30px;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+h3 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+p, li {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #e5e5e5;
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #a3a3a3;
+  margin-top: 10px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.highlight {
+  color: #d4af37;
+  font-weight: 700;
+}
+
+/* 3. LAYOUTS */
+
+/* Hero Slide */
+.hero-layout {
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1515462277126-2dd0c162007a?auto=format&fit=crop&w=1976&q=80');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Absolute to cover container padding */
+  top:0; left:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.hero-layout h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+/* Two Column */
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tiled Content */
+.tiled-content {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap; /* Added for responsiveness */
+}
+
+.tile {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 30px;
+  flex: 1;
+  min-width: 280px; /* Minimum width for tiles */
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.tile:hover {
+  border-color: #d4af37;
+  transform: translateY(-5px);
+}
+
+.tile .icon {
+  font-size: 48px;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+/* Steps Layout */
+.steps-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.step-item {
+    flex: 1;
+    min-width: 300px;
+    background: #111;
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 20px; /* For mobile stacking */
+}
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    background: #d4af37;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Coupon Style */
+.coupon-card {
+    background: linear-gradient(135deg, #111, #222);
+    border: 2px dashed #d4af37;
+    padding: 40px;
+    text-align: center;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.coupon-card::before, .coupon-card::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.coupon-card::before { left: -15px; }
+.coupon-card::after { right: -15px; }
+
+.price-tag {
+    font-size: clamp(40px, 5vw, 60px);
+    color: #d4af37;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Bleed Layout Adjustment */
+.slide-container.bleed-image-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
+    align-items: stretch;
+}
+
+.slide-container.bleed-image-layout .content-area {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    z-index: 2;
+}
+
+.slide-container.bleed-image-layout img.bleed-image-side {
+    height: 100%;
+    min-height: 720px;
+    width: 100%;
+    object-fit: cover;
+    border-left: 2px solid #d4af37;
+    position: relative;
+    z-index: 1;
+}
+
+.slide-container.bleed-image-layout.reverse img.bleed-image-side {
+    border-left: none;
+    border-right: 2px solid #d4af37;
+    order: -1;
+}
+
+.content-area {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badge {
+    background-color: #d4af37;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+/* Video Placeholder */
+.video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #555;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-placeholder:hover {
+    border-color: #d4af37;
+    background: #111;
+}
+
+.video-placeholder i {
+    font-size: 48px;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 900px) {
+    .two-column, .slide-container.bleed-image-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .slide-container.bleed-image-layout img.bleed-image-side {
+        height: 300px;
+        min-height: auto;
+        border: none;
+        border-bottom: 2px solid #d4af37;
+        order: -1 !important; /* Always put image on top on mobile */
+    }
+    
+    .slide-container.bleed-image-layout .content-area {
+        padding: 30px;
+    }
+
+    .tiled-content {
+        flex-direction: column;
+    }
+    
+    .steps-layout {
+        flex-direction: column;
+    }
+    
+    h2 {
+        border-bottom: none; /* Remove underline on mobile center align if preferred */
+        text-decoration: underline solid #d4af37 2px;
+        text-underline-offset: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Hero Section -->
+<div class="slide-container" id="slide1">
+    <div class="hero-layout">
+        <p style="color: #d4af37; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.9);">Fate Studies × Marketing Subscription</p>
+        <h1>運命を読み解く叡智と、<br>時代を勝ち抜く戦略を。</h1>
+        <div style="width: 100px; height: 3px; background-color: #d4af37; margin: 30px 0;"></div>
+        <p class="subtitle" style="text-shadow: 0 2px 4px rgba(0,0,0,0.9);">「風水・人相学 × 実践 君主帝旺学」<br>至高のサブスクリプションがついに始動。</p>
+    </div>
+</div>
+
+<!-- Slide 2: Introduction -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">ご挨拶・コンセプト</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="text-align: left;">
+                <p style="margin-bottom: 20px;">いつも温かい応援をいただき、ありがとうございます。<br>これまで多くの方から<strong>「先生の知識と技術をいつでも学べる場所がほしい」</strong>というお声をいただいてきました。</p>
+                <p style="margin-bottom: 20px;">そのご期待に応え、私の持てる技術と経験をすべて注ぎ込む場所として、サブスクリプションの動画講座をスタートさせました。</p>
+                <p class="highlight" style="font-size: 22px;">運命学で「自分自身の活かし方」を知り、<br>マーケティングで「社会への届け方」を学ぶ。</p>
+            </div>
+            <div class="image-wrapper">
+                <!-- Compass / Map Concept -->
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80" alt="Compass Concept">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: The 3 Pillars -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">3つの提供コンテンツ</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-video"></i></div>
+                <h3>動画講座</h3>
+                <p>「風水」や「人相学」を、初心者からプロ志向の方まで納得の密度で解説。実例を交えながら、視覚的に深く理解を深めていただけます。</p>
+            </div>
+            <div class="tile" style="border-color: #d4af37; background: rgba(212, 175, 55, 0.1);">
+                <div class="badge">Coming Soon</div>
+                <div class="icon"><i class="fa-solid fa-microphone-lines"></i></div>
+                <h3>音声配信（ラジオ）</h3>
+                <p>移動中も学べる戦略ラジオ。ビジネスの質を劇的に高める「君主帝旺学」の真髄をお届けします。</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <h3>PDF資料集</h3>
+                <p>講義の内容を補完し、日々の生活や仕事でそのまま使える特別な資料集。手元に置いておきたい「知恵の集大成」です。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Feng Shui Video Details -->
+<div class="slide-container" id="slide4">
+    <div class="content-area" style="text-align: left;">
+        <h2 class="slide-title" style="border:none;">動画講座：風水鑑定編</h2>
+        <h3 style="color:#d4af37;">「鑑定書」を作成できる、<br>プロの技術を</h3>
+        <p>単なる知識の習得ではありません。実際にクライアントにお渡しできる『風水鑑定書』の作り方を徹底指導します。</p>
+        <ul style="margin-top:20px; padding-left:20px; color:#e5e5e5; font-size: 16px;">
+            <li>プロ仕様の鑑定書作成の型を習得</li>
+            <li>作成した鑑定書を販売し、新たな収益の柱に</li>
+            <li>一生使える「スキル」として風水を活用</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 5: Physiognomy Video Details -->
+<div class="slide-container bleed-image-layout reverse" id="slide5">
+    <!-- Face / Study Concept -->
+    <img class="bleed-image-side" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop" alt="Study or Book Concept">
+    <div class="content-area" style="text-align: left;">
+        <h2 class="slide-title" style="border:none;">動画講座：人相学編</h2>
+        <h3 style="color:#d4af37;">対面鑑定の技術を<br>画面越しに伝授</h3>
+        <p>NHKカルチャーセンターで好評を博した「人相学」の授業を動画講座化。頭の上から足の先まで、見ただけで分かるように丁寧に解説します。</p>
+        <p style="margin-top: 10px;">また目の動きや体の動きで、人の心の動きを読む『動体言語』も学べる内容です。</p>
+        <ul style="margin-top:20px; padding-left:20px; color:#e5e5e5; font-size: 16px;">
+            <li>顔だけでなく、全身から情報を読み解く技術</li>
+            <li>一瞬の仕草から心理を見抜く『動体言語』</li>
+            <li>ビジネスや対人関係ですぐに使える実践的スキル</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 6: Audio Details -->
+<div class="slide-container bleed-image-layout" id="slide6">
+    <div class="content-area" style="text-align: left;">
+        <span class="badge">Coming Soon</span>
+        <h2 class="slide-title" style="border:none;">音声配信：戦略ラジオ</h2>
+        <h3 style="color:#d4af37;">時代を問わない「君主帝旺学」</h3>
+        <p>古の皇帝たちが国を治めるために用いた秘伝の学問「君主帝旺学」。現代のビジネスリーダーに必要な統率力と戦略眼を、音声でラジオ風に配信します。</p>
+        <br>
+        <p class="highlight"><i class="fa-solid fa-hourglass-half"></i> 現在、鋭意制作中</p>
+        <p style="font-size: 16px; opacity: 0.8;">今後の追加コンテンツとして楽しみにお待ちください。</p>
+    </div>
+    <!-- Microphone / Broadcast Concept -->
+    <img class="bleed-image-side" src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1000&q=80" alt="Microphone">
+</div>
+
+<!-- Slide 7: Registration Steps (Video) -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">動画講座のはじめかた</h2>
+    <div class="content-area">
+        <div class="steps-layout">
+            <div class="step-item" style="flex:1;">
+                <div class="step-number">1</div>
+                <h3>動画講座に登録</h3>
+                <p>画面の案内に沿って登録してください。</p>
+            </div>
+            <div class="step-item" style="flex:1;">
+                <div class="step-number">2</div>
+                <h3>クーポン入力</h3>
+                <p>お支払い画面でコードを入力すると、割引が適用されます。</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center;">
+            <p class="highlight" style="margin-bottom: 10px;">▼ 実際の登録手順を動画で確認する ▼</p>
+            <!-- Video Placeholder -->
+            <div class="video-placeholder" style="width: 80%; margin: 0 auto; height: 250px; background: #000; border: 1px solid #d4af37;">
+                 <i class="fa-solid fa-circle-play"></i>
+                 <span style="font-size: 18px; color: #fff;">【登録手順解説動画】</span>
+                 <span style="font-size: 14px; color: #aaa;">ここをクリックして再生</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Coupon -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title" style="text-align: center; border: none; width: 100%;">初月限定 特別価格キャンペーン</h2>
+    <div class="content-area">
+        <div class="coupon-card">
+            <h3 style="color: #a3a3a3; font-size: 20px; margin-bottom: 10px;">SPECIAL TRIAL OFFER</h3>
+            <p>まずは1ヶ月、その価値を体感してください。</p>
+            <div class="price-tag">初月 980円<span style="font-size: 24px;">（税込）</span></div>
+            
+            <!-- Emphasis Added Here -->
+            <div style="margin: 20px 0;">
+                <p style="font-size: 14px; color: #d4af37; font-weight: bold; margin-bottom: 5px;">▼ クーポンコード（コピーして入力） ▼</p>
+                <div style="background: #fff; color: #000; padding: 15px 30px; display: inline-block; font-family: monospace; font-size: 24px; font-weight: bold; letter-spacing: 2px; border: 3px solid #d4af37; box-shadow: 0 0 15px rgba(212,175,55,0.5);">0butff3wgel</div>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 14px; color: #888;">申し込み画面にて上記コードを入力し、割引を確認してください。</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: CTA -->
+<div class="slide-container bleed-image-layout reverse" id="slide9">
+    <img class="bleed-image-side" src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=1000&q=80" alt="Smartphone Success">
+    <div class="content-area" style="text-align: center; align-items: center;">
+        <h2 class="slide-title" style="border:none; text-align: center;">今すぐ申し込む</h2>
+        <p style="margin-bottom: 40px;">あなたの新しい挑戦を、全力でサポートします。</p>
+        
+        <div style="background: linear-gradient(45deg, #d4af37, #f2d06b); color: #000; padding: 20px 50px; border-radius: 50px; font-weight: bold; font-size: 24px; box-shadow: 0 0 20px rgba(212,175,55,0.4); cursor: pointer;">
+            動画講座を試してみる <i class="fa-solid fa-arrow-right"></i>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
