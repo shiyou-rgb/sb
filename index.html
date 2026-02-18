@@ -594,6 +594,7 @@ p, li {
         </div>
     </div>
 </div>
+
 <!-- Slide 9: CTA -->
 <div class="slide-container bleed-image-layout reverse" id="slide9">
     <img class="bleed-image-side" src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=1000&q=80" alt="Smartphone Success">
@@ -601,7 +602,6 @@ p, li {
         <h2 class="slide-title" style="border:none; text-align: center; font-size: 40px;">今すぐ申し込む</h2>
         <p style="margin-bottom: 40px; font-size: 18px;">あなたの新しい挑戦を、全力でサポートします。<br>運命を切り開く準備はできましたか？</p>
         
-        <!-- style属性を直接追加して、外部CSSが効かない環境でもボタンに見えるように修正 -->
         <a href="https://mosh.jp/services/318241?openExternalBrowser=1" class="cta-button" target="_blank" style="background: linear-gradient(45deg, #d4af37, #f2d06b); color: #000; padding: 20px 60px; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 0 20px rgba(212,175,55,0.4); text-decoration: none; display: inline-block; border: none;">
             動画講座を試してみる <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
         </a>
@@ -609,7 +609,54 @@ p, li {
     </div>
 </div>
 
-<!-- Toast for Copy Notification -->
+<style>
+    /* トーストの基本設定（普段は隠す） */
+    #toast {
+        visibility: hidden; /* ここが重要：最初は見えなくする */
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333; /* 背景色：黒 */
+        color: #fff; /* 文字色：白 */
+        text-align: center;
+        border-radius: 4px;
+        padding: 16px;
+        position: fixed; /* 画面に固定 */
+        z-index: 9999; /* 最前面に表示 */
+        left: 50%;
+        bottom: 30px;
+        font-size: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* JavaScriptから「show」クラスがついた時だけ表示 */
+    #toast.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* フワッと出てくるアニメーション */
+    @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    /* フワッと消えるアニメーション */
+    @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+</style>
 <div id="toast">クーポンコードをコピーしました！</div>
 
 <script>
