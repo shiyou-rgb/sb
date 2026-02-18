@@ -410,6 +410,13 @@ p, li {
     </div>
 </div>
 
+<!-- Interstitial CTA Button -->
+<div style="width: 100%; display: flex; justify-content: center; z-index: 10;">
+    <a href="https://mosh.jp/services/318241?openExternalBrowser=1" class="cta-button" target="_blank" style="background: linear-gradient(45deg, #d4af37, #f2d06b); color: #000; padding: 20px 60px; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 0 20px rgba(212,175,55,0.4); text-decoration: none; display: inline-block; border: none;">
+        動画講座を試してみる <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+    </a>
+</div>
+
 <!-- Slide 2: Introduction -->
 <div class="slide-container" id="slide2">
     <h2 class="slide-title">ご挨拶・コンセプト</h2>
@@ -455,18 +462,26 @@ p, li {
 
 <!-- Slide 4: Feng Shui Video Details -->
 <div class="slide-container" id="slide4">
-    <div class="content-area" style="text-align: left;">
-        <h2 class="slide-title" style="border:none;">動画講座：風水鑑定編</h2>
-        <h3 style="color:#d4af37;">「鑑定書」を作成できる、<br>プロの技術を</h3>
-        <p>単なる知識の習得ではありません。実際にクライアントにお渡しできる『風水鑑定書』の作り方を徹底指導します。</p>
-        <ul style="margin-top:20px; padding-left:20px; color:#e5e5e5; font-size: 16px;">
-            <li>プロ仕様の鑑定書作成の型を習得</li>
-            <li>作成した鑑定書を販売し、新たな収益の柱に</li>
-            <li>一生使える「スキル」として風水を活用</li>
-        </ul>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="text-align: left;">
+                <h2 class="slide-title" style="border:none;">動画講座：風水鑑定編</h2>
+                <h3 style="color:#d4af37;">「鑑定書」を作成できる、<br>プロの技術を</h3>
+                <p>単なる知識の習得ではありません。実際にクライアントにお渡しできる『風水鑑定書』の作り方を徹底指導します。</p>
+                <ul style="margin-top:20px; padding-left:20px; color:#e5e5e5; font-size: 16px;">
+                    <li>プロ仕様の鑑定書作成の型を習得</li>
+                    <li>作成した鑑定書を販売し、新たな収益の柱に</li>
+                    <li>一生使える「スキル」として風水を活用</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://github.com/shiyou-rgb/sb/blob/main/Gemini_Generated_Image_pa9fs4pa9fs4pa9f.png?raw=true" 
+                     alt="風水鑑定イメージ" 
+                     style="width: 100%; height: 100%; object-fit: cover; border: 1px solid #d4af37; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+            </div>
+        </div>
     </div>
 </div>
-
 <!-- Slide 5: Physiognomy Video Details -->
 <div class="slide-container bleed-image-layout reverse" id="slide5">
     <!-- Face / Study Concept -->
@@ -526,19 +541,26 @@ p, li {
     </div>
 </div>
 
-<!-- Slide 8: Coupon -->
+lide 8: Coupon -->
 <div class="slide-container" id="slide8">
     <h2 class="slide-title" style="text-align: center; border: none; width: 100%;">初月限定 特別価格キャンペーン</h2>
-    <div class="content-area">
+    <div class="content-area" style="width: 100%;">
         <div class="coupon-card">
             <h3 style="color: #a3a3a3; font-size: 20px; margin-bottom: 10px;">SPECIAL TRIAL OFFER</h3>
             <p>まずは1ヶ月、その価値を体感してください。</p>
-            <div class="price-tag">初月 980円<span style="font-size: 24px;">（税込）</span></div>
             
-            <!-- Emphasis Added Here -->
-            <div style="margin: 20px 0;">
-                <p style="font-size: 14px; color: #d4af37; font-weight: bold; margin-bottom: 5px;">▼ クーポンコード（コピーして入力） ▼</p>
-                <div style="background: #fff; color: #000; padding: 15px 30px; display: inline-block; font-family: monospace; font-size: 24px; font-weight: bold; letter-spacing: 2px; border: 3px solid #d4af37; box-shadow: 0 0 15px rgba(212,175,55,0.5);">0butff3wgel</div>
+            <div style="margin-top: 20px;">
+                <p style="font-size: 20px; color: #888; text-decoration: line-through; margin-bottom: 0;">通常月額 9,800円</p>
+                <div class="price-tag" style="margin-top: 5px; margin-bottom: 5px;">初月 980円<span style="font-size: 24px;">（税込）</span></div>
+                <p style="font-size: 15px; color: #d4af37;">※2ヶ月目以降は 9,800円（税込）となります</p>
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <p style="font-size: 14px; color: #d4af37; font-weight: bold; margin-bottom: 5px;">▼ クーポンコード（クリックでコピー） ▼</p>
+                <div class="coupon-box" onclick="copyCoupon('0butff3wgel')">
+                    0butff3wgel
+                </div>
+                <span class="click-hint">Click to Copy</span>
             </div>
             
             <p style="margin-top: 20px; font-size: 14px; color: #888;">申し込み画面にて上記コードを入力し、割引を確認してください。</p>
