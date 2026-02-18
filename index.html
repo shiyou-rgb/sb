@@ -533,6 +533,41 @@ p, li {
 </div>
 
 <div class="slide-container" id="slide8">
+    
+    <style>
+        .responsive-coupon {
+            /* 基本デザイン（共通） */
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            font-family: monospace !important;
+            font-weight: bold !important;
+            border: 4px solid #d4af37 !important;
+            border-radius: 6px !important;
+            cursor: pointer !important;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.7) !important;
+            display: inline-block !important;
+            margin: 15px 0 !important;
+            text-shadow: none !important;
+            
+            /* 【PC用のサイズ】 */
+            font-size: 36px !important;
+            padding: 15px 40px !important;
+            letter-spacing: 1px !important;
+            max-width: 90% !important; /* 画面からはみ出さない保険 */
+        }
+
+        /* 【スマホ用のサイズ】画面幅が600px以下の時だけ発動 */
+        @media (max-width: 600px) {
+            .responsive-coupon {
+                font-size: 24px !important; /* 文字を小さく */
+                padding: 15px 15px !important; /* 余白を狭く */
+                letter-spacing: 0 !important; /* 文字間隔を詰める */
+                border-width: 3px !important; /* 枠線を少し細く */
+                word-break: break-all !important; /* 強制的に改行してはみ出し防止 */
+            }
+        }
+    </style>
+
     <h2 class="slide-title" style="text-align: center; border: none; width: 100%;">初月限定 特別価格キャンペーン</h2>
     <div class="content-area" style="width: 100%;">
         <div class="coupon-card">
@@ -548,8 +583,7 @@ p, li {
             <div style="margin: 30px 0;">
                 <p style="font-size: 14px; color: #d4af37; font-weight: bold; margin-bottom: 5px;">▼ クーポンコード（クリックでコピー） ▼</p>
                 
-                <div class="coupon-box" onclick="copyCoupon('0butff3wgel')" 
-                     style="background-color: #ffffff; color: #000000; font-family: monospace; font-size: 36px; font-weight: bold; letter-spacing: 1px; padding: 15px 40px; border: 4px solid #d4af37; border-radius: 6px; display: inline-block; cursor: pointer; box-shadow: 0 0 25px rgba(212, 175, 55, 0.7); margin: 15px 0;">
+                <div class="coupon-box responsive-coupon" onclick="copyCoupon('0butff3wgel')">
                     0butff3wgel
                 </div>
                 
